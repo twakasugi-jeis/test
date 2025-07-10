@@ -1,0 +1,74 @@
+$schema: "1.0"
+name: "development-environment-custom"
+image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
+tasks:
+  - name: winget
+    description: Install .NET SDK 8
+    timeout: 3600
+    parameters:
+      package: Microsoft.DotNet.SDK.8
+  - name: winget
+    description: Install GitHub CLI
+    timeout: 3600
+    parameters:
+      package: GitHub.cli
+  - name: winget
+    description: Install Azure CLI
+    timeout: 3600
+    parameters:
+      package: Microsoft.AzureCLI
+  - name: winget
+    description: Install Python 3.12
+    timeout: 3600
+    parameters:
+      package: Python.Python.3.12
+  - name: winget
+    description: Install 7-Zip
+    timeout: 3600
+    parameters:
+      package: 7zip.7zip
+  - name: winget
+    description: Install Google Chrome
+    timeout: 3600
+    parameters:
+      package: Google.Chrome
+  - name: powershell
+    description: Install Japanese language pack
+    timeout: 3600
+    parameters:
+      command: Install-Language -Language ja-JP
+  - name: powershell
+    description: Set UI language override to Japanese
+    timeout: 3600
+    parameters:
+      command: Set-WinUILanguageOverride -Language ja-JP
+  - name: powershell
+    description: Set user language list to Japanese
+    timeout: 3600
+    parameters:
+      command: Set-WinUserLanguageList -LanguageList ja-JP -Force
+  - name: powershell
+    description: Set system preferred UI language to Japanese
+    timeout: 3600
+    parameters:
+      command: Set-SystemPreferredUILanguage -Language ja-JP
+  - name: powershell
+    description: Set system locale to Japanese
+    timeout: 3600
+    parameters:
+      command: Set-WinSystemLocale -SystemLocale ja-JP
+  - name: powershell
+    description: Set culture information to Japanese
+    timeout: 3600
+    parameters:
+      command: Set-Culture -CultureInfo ja-JP
+  - name: powershell
+    description: Set time zone to Tokyo Standard Time
+    timeout: 3600
+    parameters:
+      command: Set-TimeZone -Id -GeoId 0x7A
+  - name: powershell
+    description: Set default input method to Japanese IME
+    timeout: 3600
+    parameters:
+      command: 'Set-WinDefaultInputMethodOverride -InputTip "0411:00000411"'
