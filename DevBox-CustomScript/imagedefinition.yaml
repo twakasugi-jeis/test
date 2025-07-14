@@ -66,7 +66,7 @@ tasks:
     description: Set time zone to Tokyo Standard Time
     timeout: 3600
     parameters:
-      command: Set-TimeZone -Id -GeoId 0x7A
+      command: Set-TimeZone -GeoId 0x7A
   - name: powershell
     description: Set default input method to Japanese IME
     timeout: 3600
