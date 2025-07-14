@@ -1,0 +1,29 @@
+$schema: "1.0"
+name: "development-environment-custom"
+image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
+tasks:
+  - name: powershell
+    description: Set time zone to Tokyo Standard Time
+    timeout: 3600
+    parameters:
+      command: 'Set-TimeZone -Id "Tokyo Standard Time"'
+  - name: powershell
+    description: Set time zone to Tokyo Standard Time
+    timeout: 3600
+    parameters:
+      command: Set-TimeZone -Id 'Tokyo Standard Time'
+  - name: powershell
+    description: Set time zone to Tokyo Standard Time
+    timeout: 3600
+    parameters:
+      command: Set-TimeZone -Id "Tokyo Standard Time"
+  - name: powershell
+    description: Set time zone to Tokyo Standard Time
+    timeout: 3600
+    parameters:
+      command: "Set-TimeZone -Id 'Tokyo Standard Time'"
+  - name: powershell
+    description: Set default input method to Japanese IME
+    timeout: 3600
+    parameters:
+      command: 'Set-WinDefaultInputMethodOverride -InputTip "0411:00000411"'
