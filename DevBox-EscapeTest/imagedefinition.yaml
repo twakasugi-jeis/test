@@ -2,38 +2,38 @@ $schema: "1.0"
 name: "development-environment-custom-escape-test"
 image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
 tasks:
-  - name: powershell
+  - name: powershell # 失敗
     description: Set time zone to Tokyo Standard Time
     timeout: 3600
     parameters:
       command: "Set-TimeZone -Id \"Tokyo Standard Time\""
-  - name: powershell
+  - name: powershell # 成功
     description: Set time zone to Tokyo Standard Time
     timeout: 3600
     parameters:
       command: "Set-TimeZone -Id 'Tokyo Standard Time'"
-  - name: powershell
+  - name: powershell # 失敗
     description: Set time zone to Tokyo Standard Time
     timeout: 3600
     parameters:
       command: |
         $timezone = "Tokyo Standard Time"
         Set-TimeZone -Id $timezone
-  - name: powershell
+  - name: powershell # 失敗
     description: Set time zone to Tokyo Standard Time
     timeout: 3600
     parameters:
       command: |
         $timezone = \"Tokyo Standard Time\"
         Set-TimeZone -Id $timezone
-  - name: powershell
+  - name: powershell # 失敗
     description: Set time zone to Tokyo Standard Time
     timeout: 3600
     parameters:
       command: |
         "$timezone = \"Tokyo Standard Time\""
         "Set-TimeZone -Id $timezone"
-  - name: powershell
+  - name: powershell # 成功
     description: Set time zone to Tokyo Standard Time
     timeout: 3600
     parameters:
