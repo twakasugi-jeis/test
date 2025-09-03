@@ -2,6 +2,26 @@ $schema: "1.0"
 name: "development-environment-custom"
 image: microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win11-m365-gen2
 tasks:
+  - name: powershell
+    description: Ensure Windows Package Manager (winget) is available
+    timeout: 3600
+    parameters:
+      command: |
+        if (!(Get-Command winget -ErrorAction SilentlyContinue)) {
+          Write-Host "Installing winget..."
+          Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
+        } else {
+          Write-Host "winget is already available"
+        }
+  - name: powershell
+    description: Install Visual Studio Code with Japanese Language Pack
+    timeout: 3600
+    parameters:
+      command: |
+        winget install -e --id Microsoft.VisualStudioCode
+        code --install-extension MS-CEINTL.vscode-language-pack-ja --force
+        if (!(Test-Path "$env:APPDATA\Code\User")) { mkdir "$env:APPDATA\Code\User" -Force }
+        '{"locale":"ja"}' | Out-File "$env:APPDATA\Code\User\locale.json" -Encoding UTF8
   - name: winget
     description: Install .NET SDK 8
     timeout: 3600
